@@ -3,7 +3,6 @@
   "package": "cc.unilock.shutup.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "affinity.EmancipatedBlockEntityMixin",
     "aurorasdeco.DatagenMixin",
     "jsonpatcher.PatchingContextMixin",
     "porting_lib.ObjLoaderMixin"
