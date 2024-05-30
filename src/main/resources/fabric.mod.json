@@ -9,11 +9,20 @@
 	],
 	"license": "MIT",
 	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"cc.unilock.shutup.ShutUp"
+		]
+	},
 	"mixins": [
 		"shutup.mixins.json"
 	],
 	"depends": {
 		"fabricloader": "*",
-		"minecraft": ">=1.20"
+		"minecraft": ">=1.20",
+		"affinity": "*",
+		"aurorasdeco": "*",
+		"jsonpatcher": "*",
+		"porting_lib_obj_loader": "*"
 	}
 }
