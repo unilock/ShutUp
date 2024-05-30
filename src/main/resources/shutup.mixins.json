@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "cc.unilock.shutup.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "aurorasdeco.DatagenMixin",
+    "jsonpatcher.PatchingContextMixin",
+    "porting_lib.ObjLoaderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

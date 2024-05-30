@@ -1,0 +1,19 @@
+{
+	"schemaVersion": 1,
+	"id": "shutup",
+	"version": "${version}",
+	"name": "ShutUp",
+	"description": "Horrible mod to silence extraneous logging",
+	"authors": [
+		"unilock"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"mixins": [
+		"shutup.mixins.json"
+	],
+	"depends": {
+		"fabricloader": "*",
+		"minecraft": ">=1.20"
+	}
+}
