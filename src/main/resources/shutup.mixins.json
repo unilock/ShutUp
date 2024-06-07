@@ -5,6 +5,7 @@
   "mixins": [
     "aurorasdeco.DatagenMixin",
     "jsonpatcher.PatchingContextMixin",
+    "nbt_ac.TypeLoaderMixin",
     "porting_lib.ObjLoaderMixin"
   ],
   "injectors": {
