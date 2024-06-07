@@ -26,7 +26,9 @@ public class ObjLoaderMixin {
 				return json;
 			}
 		} catch (IOException | IllegalStateException | JsonParseException e) {
-			PortingLib.LOGGER.error("Error loading obj model from models/misc: " + id, e);
+			if (!("meatweapons".equals(id.getNamespace()) || "neepmeat".equals(id.getNamespace()))) {
+				PortingLib.LOGGER.error("Error loading obj model from models/misc: " + id, e);
+			}
 		}
 		return null;
 	}
