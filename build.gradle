@@ -12,6 +12,7 @@ base {
 
 repositories {
 	maven { url = "https://mvn.devos.one/releases/" }
+
 	exclusiveContent {
 		forRepository {
 			maven {
@@ -23,6 +24,8 @@ repositories {
 			includeGroup "maven.modrinth"
 		}
 	}
+
+	maven { url = "https://jitpack.io/" }
 }
 
 loom {
@@ -40,8 +43,14 @@ dependencies {
 
 	modImplementation "io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.4+1.20.1"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.22+1.20.1"
+	modImplementation "maven.modrinth:dynamicsurroundingsfabric:0.3.3"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "maven.modrinth:nbt-autocomplete:q6DMfyr0"
+
+	// sigh...
+	annotationProcessor "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.4"
+	implementation "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.4"
+	include "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.4"
 }
 
 processResources {
