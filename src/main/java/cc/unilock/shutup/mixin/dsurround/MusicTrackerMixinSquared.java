@@ -2,6 +2,7 @@ package cc.unilock.shutup.mixin.dsurround;
 
 import com.bawnorton.mixinsquared.TargetHandler;
 import net.minecraft.client.sound.MusicTracker;
+import org.jetbrains.annotations.Nullable;
 import org.orecruncher.dsurround.lib.logging.IModLog;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,7 +15,7 @@ public class MusicTrackerMixinSquared {
 		name = "dsurround_startPlaying"
 	)
 	@Redirect(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lorg/orecruncher/dsurround/lib/logging/IModLog;info(Ljava/lang/String;[Ljava/lang/Object;)V"))
-	private void dsurround_startPlaying(IModLog instance, String msg) {
+	private void dsurround_startPlaying(IModLog instance, String msg, @Nullable Object... params) {
 		// NO-OP
 	}
 }
