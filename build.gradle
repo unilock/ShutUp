@@ -1,9 +1,9 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	alias libs.plugins.quilt.loom
 	id 'maven-publish'
 }
 
-version = "${project.mod_version}+${project.minecraft_version}+fabric"
+version = "${project.version}+${libs.versions.minecraft.get()}+quilt"
 group = project.maven_group
 
 base {
@@ -37,27 +37,28 @@ loom {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	minecraft libs.minecraft
+	mappings variantOf(libs.quilt.mappings) { classifier 'intermediary-v2' }
+	modImplementation libs.quilt.loader
+	modImplementation libs.quilted.fabric.api
 
 	modImplementation "io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.4+1.20.1"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.22+1.20.1"
-	modImplementation "maven.modrinth:dynamicsurroundingsfabric:0.3.3"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "maven.modrinth:nbt-autocomplete:q6DMfyr0"
 
 	// sigh...
+	implementation "maven.modrinth:dynamicsurroundingsfabric:0.3.3"
 	annotationProcessor "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.4"
 	implementation "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.4"
 	include "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0-beta.4"
 }
 
 processResources {
-	inputs.property "version", project.version
+	inputs.properties "version": project.version, "group": project.group
 
-	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+	filesMatching("quilt.mod.json") {
+		expand "version": project.version, "group": project.group
 	}
 }
 

@@ -1,0 +1,50 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "${group}",
+		"id": "shutup",
+		"version": "${version}",
+		"metadata": {
+			"name": "ShutUp",
+			"description": "Horrible mod to silence extraneous logging",
+			"contributors": {
+				"unilock": "Owner"
+			}
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "cc.unilock.shutup.ShutUp"
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.26.0"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.20"
+			},
+      {
+        "id": "aurorasdeco",
+        "versions": "*"
+      },
+      {
+        "id": "dsurround",
+        "versions": "*"
+      },
+      {
+        "id": "jsonpatcher",
+        "versions": "*"
+      },
+      {
+        "id": "nbt_ac",
+        "versions": "*"
+      },
+      {
+        "id": "porting_lib_obj_loader",
+        "versions": "*"
+      }
+		]
+	},
+	"mixin": "shutup.mixins.json"
+}

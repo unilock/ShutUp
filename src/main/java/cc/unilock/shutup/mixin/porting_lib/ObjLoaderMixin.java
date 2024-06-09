@@ -21,7 +21,7 @@ public class ObjLoaderMixin {
 	@Overwrite
 	private JsonObject tryLoadModelJson(Identifier id, Resource resource) {
 		try {
-			JsonObject json = JsonParser.parseReader(resource.getReader()).getAsJsonObject();
+			JsonObject json = JsonParser.parseReader(resource.openBufferedReader()).getAsJsonObject();
 			if (json.has(ObjLoader.OBJ_MARKER)) {
 				return json;
 			}
