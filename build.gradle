@@ -17,11 +17,22 @@ repositories {
 		forRepository {
 			maven {
 				name = "Modrinth"
-				url = "https://api.modrinth.com/maven"
+				url = "https://api.modrinth.com/maven/"
 			}
 		}
 		filter {
 			includeGroup "maven.modrinth"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "CurseForge"
+				url = "https://cursemaven.com/"
+			}
+		}
+		filter {
+			includeGroup "curse.maven"
 		}
 	}
 
@@ -45,6 +56,7 @@ dependencies {
 	modImplementation "io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.4+1.20.1"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.22+1.20.1"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
+	modImplementation "curse.maven:loot-integrations-580689:5349561"
 	modImplementation "maven.modrinth:nbt-autocomplete:q6DMfyr0"
 
 	// sigh...

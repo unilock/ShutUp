@@ -37,6 +37,10 @@
         "versions": "*"
       },
       {
+        "id": "lootintegrations",
+        "versions": "*"
+      },
+      {
         "id": "nbt_ac",
         "versions": "*"
       },

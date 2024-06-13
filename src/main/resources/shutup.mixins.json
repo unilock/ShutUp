@@ -6,6 +6,7 @@
     "aurorasdeco.AurorasDecoMixin",
     "aurorasdeco.DatagenMixin",
     "jsonpatcher.PatchingContextMixin",
+    "lootintegrations.LootModifierManagerMixin",
     "nbt_ac.TypeLoaderMixin",
     "porting_lib.ObjLoaderMixin"
   ],
