@@ -45,6 +45,10 @@
         "versions": "*"
       },
       {
+        "id": "obscure_api",
+        "versions": "*"
+      },
+      {
         "id": "porting_lib_obj_loader",
         "versions": "*"
       }

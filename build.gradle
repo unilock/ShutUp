@@ -58,6 +58,7 @@ dependencies {
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "curse.maven:loot-integrations-580689:5349561"
 	modImplementation "maven.modrinth:nbt-autocomplete:q6DMfyr0"
+	modImplementation "maven.modrinth:obscure-api:16"
 
 	// sigh...
 	implementation "maven.modrinth:dynamicsurroundingsfabric:0.3.3"

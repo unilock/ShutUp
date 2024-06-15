@@ -1,6 +1,7 @@
 {
   "required": true,
   "package": "cc.unilock.shutup.mixin",
+  "plugin": "cc.unilock.shutup.ShutUpMixinConfigPlugin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "aurorasdeco.AurorasDecoMixin",
@@ -8,6 +9,7 @@
     "jsonpatcher.PatchingContextMixin",
     "lootintegrations.LootModifierManagerMixin",
     "nbt_ac.TypeLoaderMixin",
+    "obscure_api.ItemStackMixinSquared",
     "porting_lib.ObjLoaderMixin"
   ],
   "client": [
