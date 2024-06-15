@@ -25,6 +25,10 @@
 				"versions": ">=1.20"
 			},
       {
+        "id": "aquamirae",
+        "versions": "*"
+      },
+      {
         "id": "aurorasdeco",
         "versions": "*"
       },

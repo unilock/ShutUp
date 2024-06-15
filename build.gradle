@@ -54,6 +54,7 @@ dependencies {
 	modImplementation libs.quilted.fabric.api
 
 	modImplementation "io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.4+1.20.1"
+	modImplementation "maven.modrinth:aquamirae:ouUaC54p"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.22+1.20.1"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "curse.maven:loot-integrations-580689:5349561"
