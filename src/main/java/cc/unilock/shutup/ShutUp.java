@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 public class ShutUp implements ModInitializer {
 	public static final String MOD_ID = "shutup";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final boolean PACKET_DEBUG = false;
 
 	@Override
 	public void onInitialize(ModContainer mod) {
