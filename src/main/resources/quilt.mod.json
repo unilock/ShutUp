@@ -23,35 +23,7 @@
 			{
 				"id": "minecraft",
 				"versions": ">=1.20"
-			},
-      {
-        "id": "aquamirae",
-        "versions": "*"
-      },
-      {
-        "id": "aurorasdeco",
-        "versions": "*"
-      },
-      {
-        "id": "jsonpatcher",
-        "versions": "*"
-      },
-      {
-        "id": "lootintegrations",
-        "versions": "*"
-      },
-      {
-        "id": "nbt_ac",
-        "versions": "*"
-      },
-      {
-        "id": "obscure_api",
-        "versions": "*"
-      },
-      {
-        "id": "porting_lib_obj_loader",
-        "versions": "*"
-      }
+			}
 		]
 	},
 	"mixin": "shutup.mixins.json"
