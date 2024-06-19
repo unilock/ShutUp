@@ -33,10 +33,6 @@
         "versions": "*"
       },
       {
-        "id": "dsurround",
-        "versions": "*"
-      },
-      {
         "id": "jsonpatcher",
         "versions": "*"
       },
