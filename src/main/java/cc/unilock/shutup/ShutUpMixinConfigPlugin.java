@@ -2,6 +2,7 @@ package cc.unilock.shutup;
 
 import com.bawnorton.mixinsquared.canceller.MixinCancellerRegistrar;
 import org.objectweb.asm.tree.ClassNode;
+import org.quiltmc.loader.api.QuiltLoader;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
@@ -21,7 +22,9 @@ public class ShutUpMixinConfigPlugin implements IMixinConfigPlugin {
 
 	@Override
 	public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-		return true;
+		String id = mixinClassName.replace("cc.unilock.shutup.mixin.", "").split("\\.")[0];
+
+		return QuiltLoader.isModLoaded(id);
 	}
 
 	@Override
