@@ -8,8 +8,13 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = TypeLoader.class, remap = false)
 public class TypeLoaderMixin {
-	@Redirect(method = "loadEntityTypes", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;)V"))
-	private static void loadEntityTypes$error(Logger instance, String msg) {
+	@Redirect(method = "loadEntityTypes", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"))
+	private static void loadEntityTypes$error(Logger instance, String msg, Object arg1, Object arg2) {
+		// NO-OP
+	}
+
+	@Redirect(method = "loadEntityTypes", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;Ljava/lang/Object;)V"))
+	private static void loadEntityTypes$error(Logger instance, String msg, Object arg) {
 		// NO-OP
 	}
 
@@ -18,8 +23,13 @@ public class TypeLoaderMixin {
 		// NO-OP
 	}
 
-	@Redirect(method = "loadBlockEntityTypes", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;)V"))
-	private static void loadBlockEntityTypes$error(Logger instance, String msg) {
+	@Redirect(method = "loadBlockEntityTypes", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"))
+	private static void loadBlockEntityTypes$error(Logger instance, String msg, Object arg1, Object arg2) {
+		// NO-OP
+	}
+
+	@Redirect(method = "loadBlockEntityTypes", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;error(Ljava/lang/String;Ljava/lang/Object;)V"))
+	private static void loadBlockEntityTypes$error(Logger instance, String msg, Object arg) {
 		// NO-OP
 	}
 
