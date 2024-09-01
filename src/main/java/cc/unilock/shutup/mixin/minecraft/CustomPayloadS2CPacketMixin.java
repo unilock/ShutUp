@@ -16,14 +16,8 @@ public class CustomPayloadS2CPacketMixin {
 	@Final
 	private Identifier channel;
 
-	@Inject(method = "<init>(Lnet/minecraft/network/PacketByteBuf;)V", at = @At("TAIL"))
-	private void initA(CallbackInfo ci) {
-		if (ShutUp.PACKET_DEBUG)
-			ShutUp.LOGGER.info("Created packet with channel {}", this.channel);
-	}
-
-	@Inject(method = "<init>(Lnet/minecraft/util/Identifier;Lnet/minecraft/network/PacketByteBuf;)V", at = @At("TAIL"))
-	private void initB(CallbackInfo ci) {
+	@Inject(method = {"<init>(Lnet/minecraft/network/PacketByteBuf;)V", "<init>(Lnet/minecraft/util/Identifier;Lnet/minecraft/network/PacketByteBuf;)V"}, at = @At("TAIL"))
+	private void init(CallbackInfo ci) {
 		if (ShutUp.PACKET_DEBUG)
 			ShutUp.LOGGER.info("Created packet with channel {}", this.channel);
 	}
