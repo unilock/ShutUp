@@ -9,7 +9,6 @@
     "jsonpatcher.PatchingContextMixin",
     "lootintegrations.LootModifierManagerMixin",
     "minecraft.CustomPayloadS2CPacketMixin",
-    "mynethersdelight.CommonEventMixin",
     "nbt_ac.TypeLoaderMixin",
     "obscure_api.ItemStackMixinSquared",
     "porting_lib.ObjLoaderMixin"

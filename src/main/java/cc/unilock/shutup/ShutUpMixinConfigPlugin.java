@@ -17,6 +17,7 @@ public class ShutUpMixinConfigPlugin implements IMixinConfigPlugin {
 
 	@Override
 	public String getRefMapperConfig() {
+		// NO-OP
 		return null;
 	}
 
@@ -34,6 +35,7 @@ public class ShutUpMixinConfigPlugin implements IMixinConfigPlugin {
 
 	@Override
 	public List<String> getMixins() {
+		// NO-OP
 		return null;
 	}
 
