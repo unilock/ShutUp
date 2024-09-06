@@ -11,7 +11,8 @@
     "minecraft.CustomPayloadS2CPacketMixin",
     "nbt_ac.TypeLoaderMixin",
     "obscure_api.ItemStackMixinSquared",
-    "porting_lib.ObjLoaderMixin"
+    "porting_lib.ObjLoaderMixin",
+    "quilt_status_effect.LivingEntityMixin"
   ],
   "client": [
     "aquamirae.ModelTorturedSoulMixin",

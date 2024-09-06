@@ -1,5 +1,6 @@
 package cc.unilock.shutup;
 
+import com.bawnorton.mixinsquared.adjuster.MixinAnnotationAdjusterRegistrar;
 import com.bawnorton.mixinsquared.canceller.MixinCancellerRegistrar;
 import org.objectweb.asm.tree.ClassNode;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -13,6 +14,7 @@ public class ShutUpMixinConfigPlugin implements IMixinConfigPlugin {
 	@Override
 	public void onLoad(String mixinPackage) {
 		MixinCancellerRegistrar.register(new ShutUpMixinCanceller());
+		MixinAnnotationAdjusterRegistrar.register(new ShutUpMixinAnnotationAdjuster());
 	}
 
 	@Override
