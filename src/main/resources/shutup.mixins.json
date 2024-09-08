@@ -6,6 +6,7 @@
   "mixins": [
     "aurorasdeco.AurorasDecoMixin",
     "aurorasdeco.DatagenMixin",
+    "fzzy_core.ItemStackMixinSquared",
     "jsonpatcher.PatchingContextMixin",
     "lootintegrations.LootModifierManagerMixin",
     "minecraft.CustomPayloadS2CPacketMixin",
