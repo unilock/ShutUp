@@ -7,8 +7,7 @@ import java.util.List;
 public class ShutUpMixinCanceller implements MixinCanceller {
 	private static final List<String> CANCELLED = List.of(
 		"com.hakimen.kawaiidishes.mixin.PacifyEntityMixin",
-		"de.dafuqs.spectrum.mixin.LivingEntityPreventStatusClearMixin",
-		"org.quiltmc.qsl.entity.effect.mixin.LivingEntityMixin"
+		"de.dafuqs.spectrum.mixin.LivingEntityPreventStatusClearMixin"
 	);
 
 	@Override
