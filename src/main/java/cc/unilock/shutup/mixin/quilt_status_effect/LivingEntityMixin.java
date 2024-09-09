@@ -16,12 +16,17 @@
 
 package cc.unilock.shutup.mixin.quilt_status_effect;
 
+import de.dafuqs.spectrum.api.status_effect.Incurable;
+import de.dafuqs.spectrum.mixin.accessors.StatusEffectInstanceAccessor;
+import de.dafuqs.spectrum.registries.SpectrumStatusEffects;
 import io.github.fabricators_of_create.porting_lib.entity.events.living.MobEffectEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.network.packet.s2c.play.EntityStatusEffectUpdateS2CPacket;
+import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.NotNull;
 import org.quiltmc.qsl.entity.effect.api.QuiltLivingEntityStatusEffectExtensions;
 import org.quiltmc.qsl.entity.effect.api.StatusEffectEvents;
@@ -56,12 +61,18 @@ public abstract class LivingEntityMixin extends Entity implements QuiltLivingEnt
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public boolean removeStatusEffect(@NotNull StatusEffect type, @NotNull StatusEffectRemovalReason reason) {
+		final LivingEntity instance = (LivingEntity) (Object) this;
+
 		var effect = this.activeStatusEffects.get(type);
 		if (effect == null) {
 			return false;
 		}
 
 		if (StatusEffectUtils.shouldRemove((LivingEntity) (Object) this, effect, reason)) {
+			if (Incurable.isIncurable(effect) && !affectedByImmunity(instance, effect.getAmplifier())) {
+				return false;
+			}
+
 			this.activeStatusEffects.remove(type);
 			this.onStatusEffectRemoved(effect, reason);
 			return true;
@@ -73,6 +84,8 @@ public abstract class LivingEntityMixin extends Entity implements QuiltLivingEnt
 	@SuppressWarnings("ConstantConditions")
 	@Override
 	public int clearStatusEffects(@NotNull StatusEffectRemovalReason reason) {
+		final LivingEntity instance = (LivingEntity) (Object) this;
+
 		if (this.getWorld().isClient) {
 			return 0;
 		}
@@ -81,10 +94,21 @@ public abstract class LivingEntityMixin extends Entity implements QuiltLivingEnt
 		var it = this.activeStatusEffects.values().iterator();
 		while (it.hasNext()) {
 			var effect = it.next();
-			if (StatusEffectUtils.shouldRemove((LivingEntity) (Object) this, effect, reason)) {
-				var event = new MobEffectEvent.Remove((LivingEntity) (Object) this, effect);
+			if (StatusEffectUtils.shouldRemove(instance, effect, reason)) {
+				var event = new MobEffectEvent.Remove(instance, effect);
 				event.sendEvent();
 				if (!event.isCanceled()) {
+					if (Incurable.isIncurable(effect) && !affectedByImmunity(instance, effect.getAmplifier())) {
+						if (effect.getDuration() > 1200) {
+							((StatusEffectInstanceAccessor) effect).setDuration(effect.getDuration() - 1200);
+							if (!instance.getWorld().isClient()) {
+								((ServerWorld) instance.getWorld()).getChunkManager().sendToNearbyPlayers(instance, new EntityStatusEffectUpdateS2CPacket(instance.getId(), effect));
+							}
+
+							continue;
+						}
+					}
+
 					it.remove();
 					this.onStatusEffectRemoved(effect, reason);
 					removed++;
@@ -176,5 +200,20 @@ public abstract class LivingEntityMixin extends Entity implements QuiltLivingEnt
 													   StatusEffectInstance effect) {
 		instance.onRemoved(entity, attributes, effect, StatusEffectRemovalReason.UPGRADE_REAPPLYING);
 		StatusEffectEvents.ON_REMOVED.invoker().onRemoved(entity, effect, StatusEffectRemovalReason.UPGRADE_REAPPLYING);
+	}
+
+	@Unique
+	private static boolean affectedByImmunity(LivingEntity instance, int amplifier) {
+		var immunity = instance.getStatusEffect(SpectrumStatusEffects.IMMUNITY);
+		var cost = 1200 + 600 * amplifier;
+
+		if (immunity != null && immunity.getDuration() >= cost) {
+			((StatusEffectInstanceAccessor) immunity).setDuration(Math.max(5, immunity.getDuration() - cost));
+			if (!instance.getWorld().isClient()) {
+				((ServerWorld) instance.getWorld()).getChunkManager().sendToNearbyPlayers(instance, new EntityStatusEffectUpdateS2CPacket(instance.getId(), immunity));
+			}
+			return true;
+		}
+		return false;
 	}
 }

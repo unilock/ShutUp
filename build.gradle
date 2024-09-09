@@ -66,6 +66,7 @@ dependencies {
 	modImplementation "curse.maven:loot-integrations-580689:5349561"
 	modImplementation "maven.modrinth:nbt-autocomplete:AFHihruN"
 	modImplementation "maven.modrinth:obscure-api:16"
+	modImplementation "maven.modrinth:spectrum:1.8.0"
 
 	modImplementation(files("libs/entity-2.3.5-beta.34+1.20.1.jar"))
 	modCompileOnly(files("libs/excorrelation-1.1.47-dirty.jar"))
