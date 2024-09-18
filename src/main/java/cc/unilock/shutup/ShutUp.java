@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.network.packet.s2c.play.EntityStatusEffectUpdateS2CPacket;
 import net.minecraft.server.world.ServerWorld;
 import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.base.api.util.TriState;
 import org.quiltmc.qsl.entity.effect.api.StatusEffectEvents;
@@ -23,23 +24,27 @@ public class ShutUp implements ModInitializer {
 	public void onInitialize(ModContainer mod) {
 		LOGGER.info("UNILOCK WAS HERE");
 
-		StatusEffectEvents.SHOULD_REMOVE.register((entity, effect, reason) -> {
-			var event = new MobEffectEvent.Remove(entity, effect);
-			event.sendEvent();
-			return event.isCanceled() ? TriState.FALSE : TriState.DEFAULT;
-		});
-		StatusEffectEvents.SHOULD_REMOVE.register((entity, effect, reason) -> {
-			if (Incurable.isIncurable(effect) && !affectedByImmunity(entity, effect.getAmplifier())) {
-				if (effect.getDuration() > 1200) {
-					((StatusEffectInstanceAccessor) effect).setDuration(effect.getDuration() - 1200);
-					if (!entity.getWorld().isClient()) {
-						((ServerWorld) entity.getWorld()).getChunkManager().sendToNearbyPlayers(entity, new EntityStatusEffectUpdateS2CPacket(entity.getId(), effect));
+		if (QuiltLoader.isModLoaded("porting_lib_entity")) {
+			StatusEffectEvents.SHOULD_REMOVE.register((entity, effect, reason) -> {
+				var event = new MobEffectEvent.Remove(entity, effect);
+				event.sendEvent();
+				return event.isCanceled() ? TriState.FALSE : TriState.DEFAULT;
+			});
+		}
+		if (QuiltLoader.isModLoaded("spectrum")) {
+			StatusEffectEvents.SHOULD_REMOVE.register((entity, effect, reason) -> {
+				if (Incurable.isIncurable(effect) && !affectedByImmunity(entity, effect.getAmplifier())) {
+					if (effect.getDuration() > 1200) {
+						((StatusEffectInstanceAccessor) effect).setDuration(effect.getDuration() - 1200);
+						if (!entity.getWorld().isClient()) {
+							((ServerWorld) entity.getWorld()).getChunkManager().sendToNearbyPlayers(entity, new EntityStatusEffectUpdateS2CPacket(entity.getId(), effect));
+						}
 					}
+					return TriState.FALSE;
 				}
-				return TriState.FALSE;
-			}
-			return TriState.DEFAULT;
-		});
+				return TriState.DEFAULT;
+			});
+		}
 	}
 
 	private static boolean affectedByImmunity(LivingEntity instance, int amplifier) {

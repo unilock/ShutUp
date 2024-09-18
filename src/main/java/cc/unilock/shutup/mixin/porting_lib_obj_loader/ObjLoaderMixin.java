@@ -1,4 +1,4 @@
-package cc.unilock.shutup.mixin.porting_lib;
+package cc.unilock.shutup.mixin.porting_lib_obj_loader;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
