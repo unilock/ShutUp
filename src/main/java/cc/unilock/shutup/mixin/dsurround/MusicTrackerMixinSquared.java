@@ -14,7 +14,7 @@ public class MusicTrackerMixinSquared {
 		mixin = "org.orecruncher.dsurround.mixins.audio.MixinMusicManager",
 		name = "dsurround_startPlaying"
 	)
-	@Redirect(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lorg/orecruncher/dsurround/lib/logging/IModLog;info(Ljava/lang/String;[Ljava/lang/Object;)V"))
+	@Redirect(method = "@MixinSquared:Handler", at = @At(value = "INVOKE", target = "Lorg/orecruncher/dsurround/lib/logging/IModLog;info(Ljava/lang/String;[Ljava/lang/Object;)V", remap = false))
 	private void dsurround_startPlaying(IModLog instance, String msg, @Nullable Object... params) {
 		// NO-OP
 	}
