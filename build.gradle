@@ -64,7 +64,7 @@ dependencies {
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "maven.modrinth:kawaii-dishes:1.11.1"
 	modImplementation "curse.maven:loot-integrations-580689:5349561"
-	modImplementation "maven.modrinth:nbt-autocomplete:AFHihruN"
+	modImplementation "maven.modrinth:nbt-autocomplete:K91ET1RQ"
 	modImplementation "maven.modrinth:obscure-api:16"
 	modImplementation "maven.modrinth:spectrum:1.8.0"
 
@@ -73,6 +73,7 @@ dependencies {
 
 	// sigh...
 	implementation "maven.modrinth:dynamicsurroundingsfabric:0.3.3"
+	implementation "maven.modrinth:jei:15.19.0.89"
 }
 
 processResources {
