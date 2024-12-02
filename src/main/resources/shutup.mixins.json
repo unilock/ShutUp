@@ -10,6 +10,7 @@
     "jei.FabricJeiKeyMappingCategoryBuilderMixin",
     "jsonpatcher.PatchingContextMixin",
     "lootintegrations.LootModifierManagerMixin",
+    "mantle.ExtraHeartRenderHandlerMixin",
     "minecraft.CustomPayloadS2CPacketMixin",
     "nbt_ac.TypeLoaderMixin",
     "obscure_api.ItemStackMixinSquared",

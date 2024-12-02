@@ -12,6 +12,7 @@ base {
 
 repositories {
 	maven { url = "https://mvn.devos.one/releases/" }
+	maven { url = "https://mvn.devos.one/snapshots/" }
 
 	exclusiveContent {
 		forRepository {
@@ -36,6 +37,39 @@ repositories {
 		}
 	}
 
+	maven {
+		url = "https://maven.jamieswhiteshirt.com/libs-release/"
+		content {
+			includeGroup "com.jamieswhiteshirt"
+		}
+	}
+	maven {
+		url = "https://maven.ladysnake.org/releases/"
+		content {
+			includeGroup "dev.onyxstudios.cardinal-components-api"
+		}
+	}
+	maven {
+		url = "https://maven.shedaniel.me/"
+		content {
+			includeGroup "dev.architectury"
+			includeGroup "me.shedaniel"
+			includeGroup "me.shedaniel.cloth"
+		}
+	}
+	maven {
+		url = "https://maven.terraformersmc.com/releases/"
+		content {
+			includeGroup "com.terraformersmc"
+		}
+	}
+	maven {
+		url = "https://maven.wispforest.io/"
+		content {
+			includeGroup "me.alphamode"
+		}
+	}
+
 	maven { url = "https://jitpack.io/" }
 }
 
@@ -57,8 +91,9 @@ dependencies {
 	implementation "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0"
 	include "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0"
 
-	modImplementation "io.github.fabricators_of_create.Porting-Lib:entity:2.3.8+1.20.1"
-	modImplementation "io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.8+1.20.1"
+	modImplementation("io.github.fabricators_of_create.Porting-Lib:entity:2.3.8+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
+	modImplementation("io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.8+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
+	modImplementation("slimeknights.mantle:Mantle:1.20.1-1.9.269") { exclude group: "net.fabricmc.fabric-api" }
 	modImplementation "maven.modrinth:aquamirae:ouUaC54p"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.22+1.20.1"
 	modImplementation "maven.modrinth:fzzy-core:0.5.1+1.20.1"
