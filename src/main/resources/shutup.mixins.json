@@ -18,7 +18,6 @@
   "client": [
     "aquamirae.ModelTorturedSoulMixin",
     "dsurround.MusicTrackerMixinSquared",
-    "mantle.ExtraHeartRenderHandlerMixin",
     "minecraft.WindowMixin"
   ],
   "injectors": {
