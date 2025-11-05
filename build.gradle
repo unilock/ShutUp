@@ -61,7 +61,6 @@ dependencies {
 	modImplementation("io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.13+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
 	modImplementation "maven.modrinth:aquamirae:ouUaC54p"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.26+1.20.1"
-	modImplementation "curse.maven:expanded-storage-978068:5270227" //10.3.0-beta.5+1.20.1-quilt
 	modImplementation "maven.modrinth:fzzy-core:0.5.1+1.20.1"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "maven.modrinth:kawaii-dishes:1.12.0"
