@@ -11,20 +11,10 @@ base {
 }
 
 repositories {
+	maven { url = "https://maven.bawnorton.com/releases/" }
 	maven { url = "https://mvn.devos.one/releases/" }
 	maven { url = "https://mvn.devos.one/snapshots/" }
 
-	exclusiveContent {
-		forRepository {
-			maven {
-				name = "Modrinth"
-				url = "https://api.modrinth.com/maven/"
-			}
-		}
-		filter {
-			includeGroup "maven.modrinth"
-		}
-	}
 	exclusiveContent {
 		forRepository {
 			maven {
@@ -34,6 +24,17 @@ repositories {
 		}
 		filter {
 			includeGroup "curse.maven"
+		}
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven/"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
 		}
 	}
 
@@ -54,27 +55,26 @@ dependencies {
 	modImplementation libs.quilt.loader
 	modImplementation libs.quilted.fabric.api
 
-	annotationProcessor "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0"
-	implementation "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0"
-	include "com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.2.0"
+	annotationProcessor(implementation(include("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.4")))
 
-	modImplementation("io.github.fabricators_of_create.Porting-Lib:entity:2.3.8+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
-	modImplementation("io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.8+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
+	modImplementation("io.github.fabricators_of_create.Porting-Lib:entity:2.3.13+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
+	modImplementation("io.github.fabricators_of_create.Porting-Lib:obj_loader:2.3.13+1.20.1") { exclude group: "net.fabricmc.fabric-api" }
 	modImplementation "maven.modrinth:aquamirae:ouUaC54p"
-	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.22+1.20.1"
+	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.26+1.20.1"
+	modImplementation "curse.maven:expanded-storage-978068:5270227" //10.3.0-beta.5+1.20.1-quilt
 	modImplementation "maven.modrinth:fzzy-core:0.5.1+1.20.1"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
-	modImplementation "maven.modrinth:kawaii-dishes:1.11.1"
-	modImplementation "curse.maven:loot-integrations-580689:5349561"
-	modImplementation "maven.modrinth:nbt-autocomplete:b8fMFjZJ"
+	modImplementation "maven.modrinth:kawaii-dishes:1.12.0"
+	modImplementation "curse.maven:loot-integrations-580689:6640997"
+	modImplementation "maven.modrinth:nbt-autocomplete:PX15OQcc"
 	modImplementation "maven.modrinth:obscure-api:16"
-	modImplementation "maven.modrinth:spectrum:1.8.1"
+	modImplementation "maven.modrinth:spectrum:1.8.8"
 
-	modCompileOnly(files("libs/excorrelation-1.1.47-dirty.jar"))
+	modCompileOnly(files("libs/excorrelation-1.1.46-dirty.jar"))
 
 	// sigh...
 	implementation "maven.modrinth:dynamicsurroundingsfabric:0.3.3"
-	implementation "maven.modrinth:jei:15.19.0.89"
+	implementation "maven.modrinth:jei:15.20.0.118"
 }
 
 processResources {
