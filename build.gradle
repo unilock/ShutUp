@@ -62,6 +62,7 @@ dependencies {
 	modImplementation "maven.modrinth:aquamirae:ouUaC54p"
 	modImplementation "maven.modrinth:aurorasdecorations:1.0.0-beta.26+1.20.1"
 	modImplementation "maven.modrinth:fzzy-core:0.5.1+1.20.1"
+	modImplementation "maven.modrinth:gear-core:0.3.8+1.20.1"
 	modImplementation "maven.modrinth:jsonpatcher:1.0.0-beta.4+mc.1.20.1"
 	modImplementation "maven.modrinth:kawaii-dishes:1.12.0"
 	modImplementation "curse.maven:loot-integrations-580689:6640997"
