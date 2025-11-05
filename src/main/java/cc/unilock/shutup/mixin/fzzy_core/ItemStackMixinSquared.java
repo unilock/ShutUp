@@ -31,4 +31,15 @@ public class ItemStackMixinSquared {
 			ci.cancel();
 		}
 	}
+
+	@TargetHandler(
+		mixin = "me.fzzyhmstrs.fzzy_core.mixins.ItemStackMixin",
+		name = "fzzy_core_appendModifiersToTooltip"
+	)
+	@Inject(method = "@MixinSquared:Handler", at = @At("HEAD"), cancellable = true)
+	private void fzzy_core_appendModifiersToTooltip(CallbackInfo ci) {
+		if ((ItemStack) (Object) this instanceof UnmodifiableItemStack) {
+			ci.cancel();
+		}
+	}
 }
